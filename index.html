@@ -3,11 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Big Five Personality Assessment</title>
+  <title>Big Five Scoring Test</title>
 </head>
 
 <body>
-  <h1>Big Five Personality Assessment</h1>
-  <p>The assessment engine is working.</p>
+  <h1>Big Five Scoring Test</h1>
+  <pre id="output">Running test...</pre>
+
+  <script src="questions.js"></script>
+  <script src="scoring.js"></script>
+
+  <script>
+    const testAnswers = {};
+
+    // Give every item a response of 5
+    for (let i = 1; i <= 50; i++) {
+      testAnswers[i] = 5;
+    }
+
+    try {
+      const results = calculateBigFiveScores(testAnswers);
+
+      document.getElementById("output").textContent =
+        JSON.stringify(results, null, 2);
+    } catch (error) {
+      document.getElementById("output").textContent =
+        "ERROR: " + error.message;
+    }
+  </script>
 </body>
 </html>
