@@ -10,26 +10,8 @@
   <h1>Big Five Scoring Test</h1>
   <pre id="output">Running test...</pre>
 
-  <script src="questions.js"></script>
-  <script src="scoring.js"></script>
-
-  <script>
-    const testAnswers = {};
-
-    // Give every item a response of 5
-    for (let i = 1; i <= 50; i++) {
-      testAnswers[i] = 5;
-    }
-
-    try {
-      const results = calculateBigFiveScores(testAnswers);
-
-      document.getElementById("output").textContent =
-        JSON.stringify(results, null, 2);
-    } catch (error) {
-      document.getElementById("output").textContent =
-        "ERROR: " + error.message;
-    }
-  </script>
+  <script src="./questions.js"></script>
+  <script src="./scoring.js"></script>
+  <script src="./test.js"></script>
 </body>
 </html>
