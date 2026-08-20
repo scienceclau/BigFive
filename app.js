@@ -59,12 +59,19 @@ function renderQuestion() {
         >
           Back
         </button>
-
+      
+        <button
+          type="button"
+          id="start-over-button"
+          class="secondary-button"
+        >
+          Start Over
+        </button>
+      
         <button type="button" id="next-button">
           ${questionNumber === questions.length ? "See My Results" : "Next"}
         </button>
       </div>
-    </div>
   `;
 
   document
@@ -74,6 +81,10 @@ function renderQuestion() {
   document
     .getElementById("next-button")
     .addEventListener("click", goNext);
+
+  document
+  .getElementById("start-over-button")
+  .addEventListener("click", startOver);
 }
 
 
@@ -131,6 +142,22 @@ function goBack() {
   }
 }
 
+function startOver() {
+  const confirmed = window.confirm(
+    "Start over? Your current responses will be cleared."
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  for (const questionId in answers) {
+    delete answers[questionId];
+  }
+
+  currentQuestionIndex = 0;
+  renderQuestion();
+}
 
 function showResults() {
   try {
