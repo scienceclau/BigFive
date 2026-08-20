@@ -177,8 +177,14 @@ function showResults() {
     `;
 
   } catch (error) {
-    document.getElementById("assessment-message").textContent =
-      "There was a problem calculating your results. Please review your responses.";
+    console.error(error);
+
+    document.getElementById("assessment").innerHTML = `
+      <div class="assessment-results">
+        <h2>There was a problem calculating your results.</h2>
+        <p>${error.message}</p>
+      </div>
+    `;
   }
 }
 
