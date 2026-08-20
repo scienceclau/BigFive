@@ -152,12 +152,6 @@ function showResults() {
   }
 }
 
-
-const startButton = document.getElementById("start-assessment");
-
-if (startButton) {
-  startButton.addEventListener("click", function () {
-    currentQuestionIndex = 0;
     renderQuestion();
   });
 };
