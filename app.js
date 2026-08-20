@@ -229,5 +229,23 @@ function showResults() {
   }
 }
 
-renderQuestion();
+// DEVELOPMENT SHORTCUT
+// Add ?testresults=1 to the page URL to skip directly to sample results.
+
+const testResultsMode =
+  new URLSearchParams(window.location.search).get("testresults") === "1";
+
+if (testResultsMode) {
+
+  // Give every question a valid sample response.
+  // This lets the normal scoring engine calculate the results.
+  for (let questionId = 1; questionId <= 50; questionId++) {
+    answers[questionId] = ((questionId - 1) % 5) + 1;
+  }
+
+  showResults();
+
+} else {
+  renderQuestion();
+}
 
