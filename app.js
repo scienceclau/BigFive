@@ -163,7 +163,8 @@ function startOver() {
 
 function showResults() {
   try {
-    const results = calculateBigFiveScores(answers);
+    const scoredResults = calculateBigFiveScores(answers);
+    const results = buildResultsProfile(scoredResults);
 
     const container = document.getElementById("assessment");
 
