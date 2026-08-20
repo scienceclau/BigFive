@@ -120,9 +120,9 @@ function goNext() {
     currentQuestionIndex++;
     renderQuestion();
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+    document.getElementById("assessment").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
 
     return;
@@ -137,9 +137,9 @@ function goBack() {
     currentQuestionIndex--;
     renderQuestion();
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+    document.getElementById("assessment").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
   }
 }
