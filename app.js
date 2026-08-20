@@ -169,11 +169,11 @@ function showResults() {
     const container = document.getElementById("assessment");
 
     const traitOrder = [
+      "Openness to Experience",
+      "Conscientiousness",
       "Extraversion",
       "Agreeableness",
-      "Conscientiousness",
-      "Emotional Stability",
-      "Intellect/Imagination"
+      "Neuroticism"
     ];
 
     const traitBars = traitOrder.map(trait => {
