@@ -16,9 +16,19 @@ function renderQuestion() {
   const container = document.getElementById("assessment");
 
   container.innerHTML = `
+  <div class="assessment-progress-row">
     <div class="assessment-progress">
       Question ${questionNumber} of ${questions.length}
     </div>
+  
+    <button
+      type="button"
+      id="start-over-button"
+      class="start-over-link"
+    >
+      Start Over
+    </button>
+  </div>
 
     <progress
       value="${questionNumber}"
@@ -58,14 +68,6 @@ function renderQuestion() {
           ${currentQuestionIndex === 0 ? "disabled" : ""}
         >
           Back
-        </button>
-      
-        <button
-          type="button"
-          id="start-over-button"
-          class="secondary-button"
-        >
-          Start Over
         </button>
       
         <button type="button" id="next-button">
