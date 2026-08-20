@@ -168,11 +168,52 @@ function showResults() {
 
     const container = document.getElementById("assessment");
 
+    const traitOrder = [
+      "Extraversion",
+      "Agreeableness",
+      "Conscientiousness",
+      "Emotional Stability",
+      "Intellect/Imagination"
+    ];
+
+    const traitBars = traitOrder.map(trait => {
+      const score = results.traits[trait].scaleScore;
+
+      return `
+        <div class="result-trait">
+          <div class="result-trait-header">
+            <span class="result-trait-name">${trait}</span>
+            <span class="result-trait-score">${score}</span>
+          </div>
+
+          <div
+            class="result-bar"
+            role="progressbar"
+            aria-label="${trait}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="${score}"
+          >
+            <div
+              class="result-bar-fill"
+              style="width: ${score}%"
+            ></div>
+          </div>
+        </div>
+      `;
+    }).join("");
+
     container.innerHTML = `
       <div class="assessment-results">
         <h2>Your Big Five Results</h2>
 
-        <pre>${JSON.stringify(results, null, 2)}</pre>
+        <p class="results-intro">
+          Your scores are shown on a 0–100 scale.
+        </p>
+
+        <div class="results-profile">
+          ${traitBars}
+        </div>
       </div>
     `;
 
