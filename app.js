@@ -152,6 +152,5 @@ function showResults() {
   }
 }
 
-    renderQuestion();
-  });
-};
+renderQuestion();
+
