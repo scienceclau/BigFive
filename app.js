@@ -163,59 +163,34 @@ function startOver() {
 
 function showResults() {
   try {
-    const scoredResults = calculateBigFiveScores(answers);
-    const results = buildResultsProfile(scoredResults);
+    const scoredResults =
+      calculateBigFiveScores(answers);
 
-    const container = document.getElementById("assessment");
+    const results =
+      buildResultsProfile(scoredResults);
 
-    const traitOrder = [
-      "Openness to Experience",
-      "Conscientiousness",
-      "Extraversion",
-      "Agreeableness",
-      "Neuroticism"
-    ];
+    sessionStorage.setItem(
+      "bigFiveResults",
+      JSON.stringify(results)
+    );
 
-    const traitBars = traitOrder.map(trait => {
-      const score = results.traits[trait].scaleScore;
+    window.location.href =
+      "/big-5-results/";
 
-      return `
-        <div class="result-trait">
-          <div class="result-trait-header">
-            <span class="result-trait-name">${trait}</span>
-            <span class="result-trait-score">${score}</span>
-          </div>
+  } catch (error) {
+    console.error(error);
 
-          <div
-            class="result-bar"
-            role="progressbar"
-            aria-label="${trait}"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-valuenow="${score}"
-          >
-            <div
-              class="result-bar-fill"
-              style="width: ${score}%"
-            ></div>
-          </div>
-        </div>
-      `;
-    }).join("");
-
-    container.innerHTML = `
+    document.getElementById("assessment").innerHTML = `
       <div class="assessment-results">
-        <h2>Your Big Five Results</h2>
+        <h2>
+          There was a problem calculating your results.
+        </h2>
 
-        <p class="results-intro">
-          Your scores are shown on a 0–100 scale.
-        </p>
-
-        <div class="results-profile">
-          ${traitBars}
-        </div>
+        <p>${error.message}</p>
       </div>
     `;
+  }
+}
 
   } catch (error) {
     console.error(error);
