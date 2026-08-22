@@ -192,18 +192,6 @@ function showResults() {
   }
 }
 
-  } catch (error) {
-    console.error(error);
-
-    document.getElementById("assessment").innerHTML = `
-      <div class="assessment-results">
-        <h2>There was a problem calculating your results.</h2>
-        <p>${error.message}</p>
-      </div>
-    `;
-  }
-}
-
 // DEVELOPMENT SHORTCUT
 // Add ?testresults=1 to the page URL to skip directly to sample results.
 
